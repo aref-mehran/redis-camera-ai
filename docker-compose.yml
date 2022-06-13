@@ -4,6 +4,8 @@ services:
   redis:
     container_name: redis
     image: ghcr.io/redisgrafana/redis-opencv:latest
+    volumes:
+      - ./ai:/home/ai/
     ports:
       - 6379:6379
 

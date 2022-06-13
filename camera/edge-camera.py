@@ -57,9 +57,14 @@ if __name__ == '__main__':
     '''
     Capture frames
     '''
+    idx = 0
     while(True):
         try:
             ret, frame = cap.read()
+            if idx % 30 != 0:
+                idx = idx+1
+                continue
+            idx = idx+1
 
             '''
             Rotate 90 degree clockwise if required
