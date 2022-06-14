@@ -34,5 +34,5 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - C:\Users\Administrator\projects\head_body_detection_yolov3\:/home/head_body_detection_yolov3/
+      - ../head_body_detection_yolov3/:/home/head_body_detection_yolov3/
     tty: true
