@@ -7,6 +7,7 @@ from PIL import Image, ImageDraw
 import base64
 from redisgears import executeCommand as execute
 
+import requests
 
 class SimpleMovingAverage(object):
     def __init__(self, value=0.0, count=7):
@@ -247,9 +248,16 @@ def runYolo(x):
     prf.add('store')
 
 
+def runCrowdCount(x):
+    file = io.BytesIO(x['value']['img'])
+    files = {'file': file}
+    r = requests.post(
+        'http://crowd-human-head-body:8000/inference/', files=files)
+
+
 '''
 Create and register a gear that for each message in the stream
 '''
 gb = GearsBuilder('StreamReader')
-gb.map(runYolo)
+gb.map(runCrowdCount)
 gb.register('camera:0')
